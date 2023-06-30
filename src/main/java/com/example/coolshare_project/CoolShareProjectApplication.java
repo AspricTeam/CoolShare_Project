@@ -9,5 +9,4 @@ public class CoolShareProjectApplication {
     public static void main(String[] args) {
         SpringApplication.run(CoolShareProjectApplication.class, args);
     }
-
 }
