@@ -7,7 +7,6 @@ import org.mybatis.spring.annotation.MapperScan;
 
 import java.util.List;
 
-@MapperScan("com.example.coolshare_project.mapper")
 @Mapper
 public interface UserMapper {
     @Select("select * from users")
