@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class File {
+public class Files {
     private int f_id;
     private String f_name;
     private String f_path;

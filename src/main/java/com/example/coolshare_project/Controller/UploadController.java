@@ -1,13 +1,12 @@
 package com.example.coolshare_project.Controller;
 
 import com.example.coolshare_project.service.UploadFileService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 public class UploadController {
     @PostMapping("/upload")
-    public String handleUpload(HttpServletRequest request,
+    public String handleUpload(
                                @RequestParam("f_id") String f_id,
                                @RequestParam("path") String path,
                                @RequestParam("file") MultipartFile file) {

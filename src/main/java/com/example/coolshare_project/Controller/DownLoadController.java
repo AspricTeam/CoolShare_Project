@@ -15,11 +15,6 @@ import java.io.File;
 public class DownLoadController {
     @PostMapping("/downloadFile")
     public ResponseEntity<FileSystemResource> downloadFile(String path) {
-        String filePath = path;//"/path/to/file"
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        FileSystemResource fileResource = new FileSystemResource(new File(filePath));
-        FileSystemResource fileResource;
-        headers.setContentDispositionFormData("attachment", fileResource.getFilename());
+        return null;
     }
 }
