@@ -1,9 +1,12 @@
 package com.example.coolshare_project;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
+@MapperScan("com.example.coolshare_project.mapper")
 public class CoolShareProjectApplication {
 
     public static void main(String[] args) {

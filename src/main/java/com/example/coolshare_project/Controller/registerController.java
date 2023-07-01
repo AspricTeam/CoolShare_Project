@@ -1,15 +1,26 @@
 package com.example.coolshare_project.Controller;
 
-import com.example.coolshare_project.entity.User;
+import com.example.coolshare_project.entity.RegisterJson;
+import com.example.coolshare_project.service.registerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 public class registerController {
-@RequestMapping(value = "/registe")
-public String register(@RequestBody User user){
+    @Autowired
+    private registerService registerService;
 
-    return "注册成功";
-}
+    @PostMapping(value = "/api/registe")
+    public String register(@RequestBody RegisterJson reg){
+        if(registerService.registerServic(reg)==1){
+            return "成功";
+        }
+        else{
+            return "失败";
+        }
+
+    }
 }
