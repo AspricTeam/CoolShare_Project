@@ -1,9 +1,8 @@
-package com.example.coolshare_project.mapper;
+package com.example.CoolShareProject.mapper;
 
-import com.example.coolshare_project.entity.User;
+import com.example.CoolShareProject.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.mybatis.spring.annotation.MapperScan;
 
 import java.util.List;
 
