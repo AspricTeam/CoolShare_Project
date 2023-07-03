@@ -5,6 +5,7 @@ import com.example.coolshare_project.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +15,9 @@ public class seacherServiceImplent implements seacherService{
     @Autowired
     private UserMapper user;
     @Override
-    public List<Integer> seacherService(SearchJson searchJson) {
+    public List<Integer> seacherService(SearchJson searchJson, HttpSession session) {
         List<Integer> list = user.searchUser(searchJson);
-        if(!list.isEmpty()){
+        if(!list.isEmpty()&&session.getAttribute("name")!=null){
             return list;
         }else {
             List<Integer> result = new ArrayList<>();

@@ -17,7 +17,7 @@ public class searchController {
 
     @PostMapping(value = "/api/searchUser")
     public SeaJson userSearch(@RequestBody SearchJson searchJson, HttpSession session){
-        List<Integer> list = seacherService.seacherService(searchJson);
+        List<Integer> list = seacherService.seacherService(searchJson,session);
         SeaJson seaJson = new SeaJson();
         seaJson.setSealist(list);
         return seaJson;
