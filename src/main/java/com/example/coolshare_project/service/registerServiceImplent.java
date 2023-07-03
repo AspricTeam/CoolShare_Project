@@ -6,6 +6,7 @@ import com.example.coolshare_project.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -38,9 +39,22 @@ public class registerServiceImplent implements registerService {
         }
         int isOk = user.insertUser(rde);
         int uid = user.findId();
-        if(isOk!=0)
-            return uid;
-        else
+        if(isOk!=0) {
+            String folderPath = "F:\\CoolShare_Files";
+            File folder = new File(folderPath+"\\"+uid);
+            if (!folder.exists()) {
+                if (folder.mkdirs()) {
+                    System.out.println("文件夹创建成功！");
+                    return uid;
+                } else {
+                    System.out.println("文件夹创建失败！");
+                    return -2;
+                }
+            } else {
+                System.out.println("文件夹已存在！");
+                return -3;
+            }
+        } else
             return -1;
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.coolshare_project.service.seacherService;
+import com.example.coolshare_project.service.searchService;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class searchController {
 
     @Autowired
-    private  seacherService seacherService;
+    private searchService seacherService;
 
     @PostMapping(value = "/api/searchUser")
     public SeaJson userSearch(@RequestBody SearchJson searchJson, HttpSession session){

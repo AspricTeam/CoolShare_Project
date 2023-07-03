@@ -7,6 +7,6 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
-public interface seacherService {
+public interface searchService {
     public List<Integer> seacherService(SearchJson searchJson, HttpSession session);
 }

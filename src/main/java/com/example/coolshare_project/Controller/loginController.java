@@ -14,7 +14,7 @@ public class loginController {
     @Autowired
     private loginService loginService;
 
-    @PostMapping("/api/getico")
+    @PostMapping("/api/login")
     public LogJson userLogin(@RequestBody LoginJson loginJson, HttpSession session){
         long login = loginService.loginService(loginJson,session);
         LogJson logJson = new LogJson();
