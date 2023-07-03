@@ -1,18 +1,23 @@
 package com.example.coolshare_project.Controller;
 
-import com.example.coolshare_project.entity.User;
+import com.example.coolshare_project.entity.LoginJson;
+import com.example.coolshare_project.service.loginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class loginController {
 
-    @PostMapping()
+    @Autowired
+    private loginService loginService;
 
-    public String userLogin(@RequestBody User user){
-
-        return "sss";
+    @PostMapping("/api/getico")
+    public long userLogin(@RequestBody LoginJson loginJson, HttpSession session){
+        long login = loginService.loginService(loginJson,session);
+        return login;
     }
-
 }

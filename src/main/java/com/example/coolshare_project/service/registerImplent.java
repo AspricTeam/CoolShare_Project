@@ -4,11 +4,13 @@ import com.example.coolshare_project.entity.RegisterDate;
 import com.example.coolshare_project.entity.RegisterJson;
 import com.example.coolshare_project.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Service
 public class registerImplent implements registerService {
     @Autowired
     private  UserMapper user;
@@ -19,7 +21,8 @@ public class registerImplent implements registerService {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         RegisterDate rde = new RegisterDate();
         try {
-            Date date1 = sdf.parse(reg.getBirth());
+            String dateString = reg.getBirth();
+            Date date1 = sdf.parse(dateString);
             rde.setName(reg.getName());
             rde.setPwd(reg.getPwd());
             rde.setSign(reg.getSign());
@@ -31,8 +34,9 @@ public class registerImplent implements registerService {
             e.printStackTrace();
         }
         int isOk = user.insertUser(rde);
+        int uid = user.findId();
         if(isOk!=0)
-            return 1;
+            return uid;
         else
             return 0;
     }

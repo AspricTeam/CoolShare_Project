@@ -14,12 +14,13 @@ public class registerController {
     private registerService registerService;
 
     @PostMapping(value = "/api/registe")
-    public String register(@RequestBody RegisterJson reg){
-        if(registerService.registerServic(reg)==1){
-            return "成功";
+    public int register(@RequestBody RegisterJson reg){
+        int uid = registerService.registerServic(reg);
+        if(uid!=0) {
+            return uid;
         }
         else{
-            return "失败";
+            return -1;
         }
 
     }
