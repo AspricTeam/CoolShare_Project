@@ -9,13 +9,12 @@ import java.util.Date;
 @Data
 public class RegisterJson {
 
-    private String name;
-    private String pwd;
-    private String sign;
-    private String sex;
-    private String birth;
-    private int display;
-    private int upublic;
-
+    private String u_name;
+    private String u_pwd;
+    private String u_sign;
+    private String u_sex;
+    private String u_birth;
+    private int u_infodisplay;
+    private int u_ispublic;
 
 }

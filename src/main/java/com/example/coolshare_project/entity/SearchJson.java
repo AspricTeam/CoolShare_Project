@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SearchJson {
-    private String searchRequest;
+    private String kw;
 
 }

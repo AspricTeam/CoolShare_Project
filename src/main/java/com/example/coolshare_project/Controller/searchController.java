@@ -16,9 +16,21 @@ public class searchController {
     private  seacherService seacherService;
 
     @PostMapping(value = "/api/searchUser")
-    public List<Integer> userSearch(@RequestBody SearchJson searchJson, HttpSession session){
+    public SeaJson userSearch(@RequestBody SearchJson searchJson, HttpSession session){
         List<Integer> list = seacherService.seacherService(searchJson);
-        return list;
+        SeaJson seaJson = new SeaJson();
+        seaJson.setSealist(list);
+        return seaJson;
     }
+    public static class SeaJson{
+        private List<Integer> sealist;
 
+        public List<Integer> getSealist() {
+            return sealist;
+        }
+
+        public void setSealist(List<Integer> sealist) {
+            this.sealist = sealist;
+        }
+    }
 }

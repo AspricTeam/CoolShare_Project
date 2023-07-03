@@ -14,14 +14,21 @@ public class registerController {
     private registerService registerService;
 
     @PostMapping(value = "/api/registe")
-    public int register(@RequestBody RegisterJson reg){
+    public registeJson register(@RequestBody RegisterJson reg){
         int uid = registerService.registerServic(reg);
-        if(uid!=0) {
+        registeJson registeJson = new registeJson();
+        registeJson.setUid(uid);
+        return registeJson;
+    }
+    public static class registeJson{
+        private int uid;
+
+        public int getUid() {
             return uid;
         }
-        else{
-            return -1;
-        }
 
+        public void setUid(int uid) {
+            this.uid = uid;
+        }
     }
 }

@@ -8,10 +8,11 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Service
-public class registerImplent implements registerService {
+public class registerServiceImplent implements registerService {
     @Autowired
     private  UserMapper user;
 
@@ -20,16 +21,18 @@ public class registerImplent implements registerService {
         String format = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         RegisterDate rde = new RegisterDate();
+        LocalDateTime now = LocalDateTime.now();
         try {
-            String dateString = reg.getBirth();
+            String dateString = reg.getU_birth();
             Date date1 = sdf.parse(dateString);
-            rde.setName(reg.getName());
-            rde.setPwd(reg.getPwd());
-            rde.setSign(reg.getSign());
-            rde.setSex(reg.getSex());
+            rde.setName(reg.getU_name());
+            rde.setPwd(reg.getU_pwd());
+            rde.setRegtimer(now);
+            rde.setSign(reg.getU_sign());
+            rde.setSex(reg.getU_sex());
             rde.setBirth(date1);
-            rde.setDisplay(reg.getDisplay());
-            rde.setUpublic(reg.getUpublic());
+            rde.setDisplay(reg.getU_infodisplay());
+            rde.setUpublic(reg.getU_ispublic());
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -38,6 +41,6 @@ public class registerImplent implements registerService {
         if(isOk!=0)
             return uid;
         else
-            return 0;
+            return -1;
     }
 }

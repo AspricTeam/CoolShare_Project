@@ -16,10 +16,12 @@ public class loginServiceImplement implements loginService{
     public Long loginService(LoginJson loginJson,HttpSession session) {
         String  isOk = user.loginUser(loginJson);
         if(!isOk.isEmpty()){
-            session.setAttribute("name", "listener");
+            session.setAttribute("name", "logged");
             return System.currentTimeMillis();
         }else{
             return -1L;
         }
     }
+
 }
+
