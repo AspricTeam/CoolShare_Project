@@ -1,8 +1,7 @@
 package com.example.CoolShareProject.mapper;
 
-import com.example.CoolShareProject.entity.GetIconJson;
-import com.example.CoolShareProject.entity.UpIconJson;
-import org.apache.ibatis.annotations.Insert;
+import com.example.CoolShareProject.entity.result.GetIconJson;
+import com.example.CoolShareProject.entity.result.UpIconJson;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;

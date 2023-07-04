@@ -13,7 +13,6 @@ public class Files {
     private int f_ispublic;
     private String f_pwd;
     private int f_download_time;
-
     public Files() {
 
     }

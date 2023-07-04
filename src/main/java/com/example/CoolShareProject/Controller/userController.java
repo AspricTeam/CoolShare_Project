@@ -1,21 +1,18 @@
 package com.example.CoolShareProject.Controller;
 
-import com.example.CoolShareProject.entity.*;
+import com.example.CoolShareProject.service.UserService;
 import com.example.CoolShareProject.entity.result.*;
-import com.example.CoolShareProject.service.*;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
-@CrossOrigin(origins = "*")
+
 @RestController
-public class UserController {
+public class userController {
+
     @Autowired
     private UserService userService;
 
@@ -35,9 +32,9 @@ public class UserController {
         return logJson;
     }
 
-    @PostMapping(value = "/api/searchuser")
-    public SeaJson userSearch(@Param("kw") String kw, HttpSession session){
-        ArrayList<Integer> list = userService.seacherService(kw,session);
+    @PostMapping(value = "/api/searchUser")
+    public SeaJson userSearch(@RequestBody SearchJson searchJson, HttpSession session){
+        List<Integer> list = userService.seacherService(searchJson,session);
         SeaJson seaJson = new SeaJson();
         seaJson.setSealist(list);
         return seaJson;

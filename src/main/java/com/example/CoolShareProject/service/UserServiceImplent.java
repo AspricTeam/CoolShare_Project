@@ -1,6 +1,5 @@
 package com.example.CoolShareProject.service;
 
-import com.example.CoolShareProject.entity.*;
 import com.example.CoolShareProject.entity.result.*;
 import com.example.CoolShareProject.mapper.IconMapper;
 import com.example.CoolShareProject.mapper.UserMapper;
@@ -17,12 +16,12 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class UserServiceImplent<ArrayListList> implements UserService{
+public class UserServiceImplent implements UserService{
 
     @Autowired
     private IconMapper iconMapper;
     @Autowired
-    private UserMapper userMapper;
+    private UserMapper user;
     @Override
     public int registerServic(RegisterJson reg) {
         String format = "yyyy-MM-dd";
@@ -43,8 +42,8 @@ public class UserServiceImplent<ArrayListList> implements UserService{
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        int isOk = userMapper.insertUser(rde);
-        int uid = userMapper.findId();
+        int isOk = user.insertUser(rde);
+        int uid = user.findId();
         if(isOk!=0) {
             String folderPath = "F:\\CoolShare_Files";
             File folder = new File(folderPath+"\\"+uid);
@@ -66,8 +65,8 @@ public class UserServiceImplent<ArrayListList> implements UserService{
 
     @Override
     public Long loginService(LoginJson loginJson, HttpSession session) {
-        String  isOk = userMapper.loginUser(loginJson);
-        if(isOk!=null){
+        String  isOk = user.loginUser(loginJson);
+        if(!isOk.isEmpty()){
             session.setAttribute("name", "logged");
             return System.currentTimeMillis();
         }else{
@@ -76,12 +75,12 @@ public class UserServiceImplent<ArrayListList> implements UserService{
     }
 
     @Override
-    public ArrayList<Integer> seacherService(String kw, HttpSession session) {
-        ArrayList<Integer> list = userMapper.searchUser(kw);
-        if(!list.isEmpty()  && session.getAttribute("name")!=null){
+    public List<Integer> seacherService(SearchJson searchJson, HttpSession session) {
+        List<Integer> list = user.searchUser(searchJson);
+        if(!list.isEmpty()&&session.getAttribute("name")!=null){
             return list;
         }else {
-            ArrayList<Integer> result = new ArrayList<>();
+            List<Integer> result = new ArrayList<>();
             result.add(-1);
             return result;
         }
@@ -93,7 +92,7 @@ public class UserServiceImplent<ArrayListList> implements UserService{
         Rsall res1 = new Rsall();
         Rsall res2 = new Rsall();
         if (session.getAttribute("name") != null) {
-            res1 = userMapper.searchAll(allJson);
+            res1 = user.searchAll(allJson);
             if(res1!=null){
                 return res1;
             }else {

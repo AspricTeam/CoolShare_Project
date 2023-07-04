@@ -164,6 +164,10 @@ public class FileController {
             return resfile;//未找到文件
         }
     }
+    @PostMapping("/test")
+    public String test(){
+        return "helloworld";
+    }
     //测试用合并时可删除########################
 //        @PostMapping("/login")
 //        public String login (HttpSession session){

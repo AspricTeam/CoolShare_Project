@@ -1,4 +1,4 @@
-package com.example.CoolShareProject.entity;
+package com.example.CoolShareProject.entity.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

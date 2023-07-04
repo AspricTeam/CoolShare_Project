@@ -1,15 +1,12 @@
-package com.example.CoolShareProject.entity;
-
+package com.example.CoolShareProject.entity.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class LoginJson {
+public class SeachAllJson {
     private int u_id;
-    private String u_pwd;
-
 }
