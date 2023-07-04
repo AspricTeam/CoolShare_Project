@@ -139,17 +139,23 @@ public class FilesServiceImp implements FilesService{
     public File getFileOfFid(String f_id,String f_pwd) {
         try {
             Files fileinfo=fileMapper.getFileInfoById(f_id);
-            String filepwd=fileinfo.getF_pwd();
-            //密码验证
-            if (!filepwd.equals("")){//存在密码则验证
-                if (!filepwd.equals(f_pwd)){
+            String filePwd=fileinfo.getF_pwd();//获取文件密码
+            int downloadTime=fileinfo.getF_download_time();//获取未下载先下载次数
+            //文件存在密码则验证发送的密码
+            if (!filePwd.equals("")){
+                if (!filePwd.equals(f_pwd)){
                     return null;
                 }
             }
             String u_id=fileMapper.getUidByFileId(f_id);
             String filename=fileinfo.getF_name();
             String path=defalut_save_path+"\\"+u_id+"\\"+filename;
-            File downloadedfile=new File(path);
+            File downloadedfile=new File(path);//获得下载资源对象
+            //数据库操作，下载次数加一
+            downloadTime++;
+            fileinfo.setF_download_time(downloadTime);
+            fileMapper.updateDownLoadTime(f_id,downloadTime);
+
             return downloadedfile;
         }catch (Exception e){
             return null;

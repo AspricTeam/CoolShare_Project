@@ -23,6 +23,9 @@ public interface FileMapper {
     //通过文件id重命名
     @Update("UPDATE files SET f_name = #{newname} WHERE f_id=#{f_id}")
     int renameFileById(@Param("f_id")String f_id,String newname);
+    //通过文件id更新下载次数
+    @Update("UPDATE files SET f_download_time = #{f_download_time} WHERE f_id=#{f_id}")
+    int updateDownLoadTime(@Param("f_id")String f_id,@Param("f_download_time")int f_download_time);
     //根据文件id获取文件名
     @Select("SELECT f_name FROM files where f_id=#{f_id}")
     String getFileNameById(@Param("f_id")String f_id);
