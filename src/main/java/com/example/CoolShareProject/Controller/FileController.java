@@ -9,10 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class FileController {
@@ -168,17 +165,17 @@ public class FileController {
         }
     }
     //测试用合并时可删除########################
-        @PostMapping("/login")
-        public String login (HttpSession session){
-            session.setAttribute("name", "logged");
-            System.out.println("有访问");
-            return "success";
-        }
-        @PostMapping("/loginout")
-        public String loginout (HttpSession session){
-            session.invalidate();
-            return "out success";
-        }
+//        @PostMapping("/login")
+//        public String login (HttpSession session){
+//            session.setAttribute("name", "logged");
+//            System.out.println("有访问");
+//            return "success";
+//        }
+//        @PostMapping("/loginout")
+//        public String loginout (HttpSession session){
+//            session.invalidate();
+//            return "out success";
+//        }
 
     //测试用合并时可删除########################
     public static class FileStructJson{

@@ -54,8 +54,9 @@ public class FilesServiceImp implements FilesService{
 
 
             //加入数据库
-            int f_id=fileMapper.addFile(filesadd);
-            fileMapper.RelateUF(String.valueOf(id),u_id);
+            fileMapper.addFile(filesadd);
+            int f_id= (int) filesadd.getF_id();
+            fileMapper.RelateUF(String.valueOf(f_id),u_id);
 
             return filesadd;
         }catch (Exception e){

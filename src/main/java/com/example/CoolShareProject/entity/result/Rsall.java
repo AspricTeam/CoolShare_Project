@@ -1,25 +1,24 @@
-package com.example.CoolShareProject.entity;
+package com.example.CoolShareProject.entity.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Rsall {
     private int u_id;
     private String u_name;
-    private String u_pwd;
-    //status:0可用，1封禁
-    private int status;
-    private Timestamp u_registe_time;
+    private int u_status;
+    private LocalDateTime u_registe_time;
     private String u_sign;
     private String u_sex;
-    private Timestamp u_birth;
+    private java.sql.Date u_birth;
     private int u_infodisplay;
     private int u_ispublic;
-
+    private int u_space;
 }
